@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <article>
+        <h2>{{ article.title }}</h2>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
+        <div class="content">
+            <img src="{{ article.image }}" alt="">
+            <p>{{ article.content }}</p>
+        </div>
+        <a href="{{ path('blog_edit', {'id': article.id}) }}" class="btn btn-primary">Modifier l'article</a>
+    </article>
+       
+{% endblock %}
