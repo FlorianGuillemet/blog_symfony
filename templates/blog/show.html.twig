@@ -6,12 +6,31 @@
 
     <article>
         <h2>{{ article.title }}</h2>
-        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie <b>{{ article.category.title }}</b></div>
         <div class="content">
             <img src="{{ article.image }}" alt="">
-            <p>{{ article.content }}</p>
+            <p>{{ article.content | raw }}</p>
         </div>
         <a href="{{ path('blog_edit', {'id': article.id}) }}" class="btn btn-primary">Modifier l'article</a>
     </article>
+
+    <div class="container">
+        <div class="col mt-5">
+            <section id="commentaires">
+                {% for comment in article.comments %}
+                    <div class="comment">
+                        <div class="row mb-1">
+                            <div class="col-3">
+                                {{ comment.author }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
+                            </div>
+                            <div class="col">
+                                {{ comment.content | raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}        
+            </section>
+        </div>
+    </div>
        
 {% endblock %}
