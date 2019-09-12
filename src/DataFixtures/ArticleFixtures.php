@@ -28,7 +28,7 @@ class ArticleFixtures extends Fixture
             for ($j = 1; $j <= mt_rand(4, 6) ; $j ++) {
                 $article = new Article();
 
-                $content = join($faker->paragraphs(mt_rand(3, 5)), '<br>');
+                $content = '<p>' . join($faker->paragraphs(mt_rand(3, 5)), '</p><p>') . '</p>';
 
                 $article->setTitle($faker->sentence())
                         ->setContent($content)
@@ -42,7 +42,7 @@ class ArticleFixtures extends Fixture
                 for($k = 1; $k <= mt_rand(3, 10); $k ++) {
                     $comment = new Comment();
 
-                    $content = join($faker->paragraphs(mt_rand(1, 3)), '<br>');
+                    $content = '<p>' . join($faker->paragraphs(mt_rand(1, 3)), '</p><p>') . '</p>';
 
                     $now = new \DateTime();
                     $interval = $now->diff($article->getCreatedAt()); // période de diff entre deux dates
@@ -55,7 +55,7 @@ class ArticleFixtures extends Fixture
                             ->setArticle($article);
 
                     $manager->persist($comment);
-            }
+                }
 
             }          
 

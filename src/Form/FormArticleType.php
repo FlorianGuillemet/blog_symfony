@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class FormArticleType extends AbstractType
 {
@@ -13,6 +15,11 @@ class FormArticleType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('category', EntityType::class, [
+                'class' => Category::class, // de quelle entité il s'agit
+                'choice_label' => 'title', // ce que doit présenter le champ dans la select list
+                'expanded' => true // sous forme de radio-boutons
+                ])
             ->add('content')
             ->add('image')
         ;
