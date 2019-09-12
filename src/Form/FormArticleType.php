@@ -16,10 +16,12 @@ class FormArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('category', EntityType::class, [
-                'class' => Category::class, // de quelle entité il s'agit
-                'choice_label' => 'title', // ce que doit présenter le champ dans la select list
-                'expanded' => true // sous forme de radio-boutons
-                ])
+                    'class' => Category::class, // de quelle entité il s'agit
+                    'choice_label' => 'title', // ce que doit présenter le champ dans la select list
+                    //'expanded' => true, // sous forme de radio-boutons
+                    'placeholder' => 'Choose an option',
+                    'required' => true
+                    ])
             ->add('content')
             ->add('image')
         ;

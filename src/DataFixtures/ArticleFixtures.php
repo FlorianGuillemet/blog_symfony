@@ -19,7 +19,7 @@ class ArticleFixtures extends Fixture
         // creer 3 categories fakees
         for($i = 1 ; $i <= 3 ; $i++) {
             $category = new Category();
-            $category->setTitle($faker->sentence())
+            $category->setTitle($faker->sentence(1))
                     ->setDescription($faker->paragraph());
 
             $manager->persist($category);
