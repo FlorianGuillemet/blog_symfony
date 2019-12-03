@@ -37,7 +37,7 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=2000)
      * @Assert\Url(
      *    checkDNS = "ANY"
      * )
@@ -60,9 +60,11 @@ class Article
      */
     private $comments;
 
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->mugs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,4 +162,5 @@ class Article
 
         return $this;
     }
+
 }
